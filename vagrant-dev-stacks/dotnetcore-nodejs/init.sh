@@ -2,9 +2,16 @@ echo 'install node & npm & curl & git'
 sudo apt-get update
 sudo apt-get install curl nodejs git-core npm -y
 
+echo 'install yarn'
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install yarn
+
+
 echo 'install docker'
 curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
+sh get-docker.shsudo apt-get update && sudo apt-get install yarn
+
 
 
 echo 'install vscode'
