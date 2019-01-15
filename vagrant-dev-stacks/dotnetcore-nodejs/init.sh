@@ -1,6 +1,10 @@
-echo 'install node & npm & curl & git'
+echo 'install npm & curl & git'
 sudo apt-get update
-sudo apt-get install curl nodejs git-core npm -y
+sudo apt-get install curl git-core npm -y
+
+echo 'install nodejs'
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+apt-get install -y nodejs
 
 echo 'install yarn'
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
