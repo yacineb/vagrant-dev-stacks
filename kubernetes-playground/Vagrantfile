@@ -1,0 +1,17 @@
+
+Vagrant.configure("2") do |config|
+  # Specify your hostname if you like
+  config.vm.hostname = "xenial-kubeadm"
+  config.vm.box = "bento/ubuntu-16.04"
+  config.vm.network "private_network", type: "dhcp"
+  config.vm.synced_folder ".", "/vagrant"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "xenial-kubeadm"
+    vb.memory = "2048"
+    vb.cpus = "2"
+    #vb.customize ["modifyvm", :id, "--ioapic", "on"]
+  end
+  config.vm.provision "docker"
+  config.vm.provision "shell", path: "init.sh"
+end
