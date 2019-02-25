@@ -62,3 +62,7 @@ $ vagrant ssh -- "kubectl taint nodes --all node-role.kubernetes.io/master-"
 $ vargrant ssh -- kubectl version
 $ vagrant ssh -- kubectl get nodes
 ```
+
+## __couchdb-dev__
+
+A simple illustration of docker provisionning inside a vagrant vm.
