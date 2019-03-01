@@ -45,20 +45,9 @@ A single node Kubernetes cluster. It's installed using kubeadm.
 
 Although [minikube](https://github.com/kubernetes/minikube) is a recommended solution for Kubernetes testing. It's not production-grade and it's always preferable to have test environment the closest possible to production.  
 
-> Once `vagrant up` is done you have to those 2 commands below to finish cluster setup:
-
+> Once `vagrant up` is done you have a single node k8s cluster up and running:
 ``` console
-
-$ #install weave network
-$ vagrant ssh -- "kubectl apply -f https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
-
-$ # untaint : allows pods to be ran on master node
-$ vagrant ssh -- "kubectl taint nodes --all node-role.kubernetes.io/master-"
-```
-
-> You can check kubernetes cluster status using those commands below
-
-``` console
+$ vagrant ssh -- kubectl cluster-info
 $ vargrant ssh -- kubectl version
 $ vagrant ssh -- kubectl get nodes
 ```
