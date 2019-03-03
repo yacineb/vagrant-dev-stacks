@@ -35,3 +35,9 @@ $ minikube dashboard
 
 - test deployment creation `kubectl create deployment http --image=katacoda/docker-http-server:latest --replicas=1`
 - dump deployment info : `kubectl describe deployment http `
+
+
+## Migrate from docker-compose
+
+You can use [Kompose](https://github.com/kubernetes/kompose) it works like a charm
+
