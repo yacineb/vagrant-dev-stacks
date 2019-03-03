@@ -41,3 +41,15 @@ $ minikube dashboard
 
 You can use [Kompose](https://github.com/kubernetes/kompose) it works like a charm
 
+## Networking
+
+- **Ingress** : Load-balancing and routing logic in k8s. it's handled by a plugin to be installed as a K8s service (Nginx, Traefic, etc)
+
+- **Cluster IP** : the default approach when creating a Kubernetes Service. The service is allocated an internal IP that other components can use to access the pods.
+By having a single IP address it enables the service to be load balanced across multiple Pods.
+
+- **Target Port** : allows to separate the port the service is available on from the port the application is listening on. TargetPort is the Port which the application is configured to listen on. Port is how the application will be accessed from the outside.
+
+- **Node port** : while TargetPort and ClusterIP make it available to inside the cluster, the NodePort exposes the service on each Node’s IP via the defined static port. No matter which Node within the cluster is accessed, the service will be reachable based on the port number defined.
+
+- **External Ips** : Another approach to making a service available outside of the cluster is via External IP addresses.

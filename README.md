@@ -45,6 +45,8 @@ A single node Kubernetes cluster. It's installed using kubeadm.
 
 Although [minikube](https://github.com/kubernetes/minikube) is a recommended solution for Kubernetes testing. It's not production-grade and it's always preferable to have test environment the closest possible to production.  
 
+Install includes all of the standard production k8s features (except HA cluster mode) : etcd, replication master/controller, orchestrator, kubectl, kubelet, kubeless (run serverless on K8s), k8s secured dashboard (**there stil an issue with it, it's not working yet**)
+
 > Once `vagrant up` is done you have a single node k8s cluster up and running:
 ``` console
 $ vagrant ssh -- kubectl cluster-info
