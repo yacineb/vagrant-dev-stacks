@@ -1,5 +1,3 @@
 # Vagrant stuff
 boxes/*
 **/.vagrant
-/vagrant-spec.config.rb
-test/vagrant-spec/.vagrant/
