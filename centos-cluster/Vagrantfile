@@ -1,0 +1,27 @@
+
+cluster = {
+  "node1" => { :ip => "192.168.33.10", :cpus => 1, :mem => 1024, :disk => "../node1-disk.vdi" },
+  "node2" => { :ip => "192.168.33.11", :cpus => 1, :mem => 1024, :disk => "../node2-disk.vdi" },
+  "node3" => { :ip => "192.168.33.12", :cpus => 1, :mem => 1024, :disk => "../node3-disk.vdi" }
+}
+
+Vagrant.configure("2") do |config|
+  cluster.each_with_index do |(hostname, info), index|
+
+    config.vm.define hostname do |cfg|
+      cfg.vm.provider :virtualbox do |vb, override|
+        config.vm.box = "centos/7"
+        override.vm.network :private_network, ip: "#{info[:ip]}"
+        override.vm.hostname = hostname
+        vb.name = hostname
+        unless File.exist?(info[:disk])
+	   vb.customize ['createhd', '--filename', info[:disk], '--variant', 'Fixed', '--size', 10 * 1024]
+	end
+        vb.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', info[:disk]]
+        vb.customize ["modifyvm", :id, "--memory", info[:mem], "--cpus", info[:cpus], "--hwvirtex", "on"]
+      end # end provider
+    end # end config
+  end #end cluster
+end
+
+

@@ -46,20 +46,6 @@ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | gre
 echo 'enable pods deploy en master'
 kubectl taint nodes --all node-role.kubernetes.io/master-
 
+echo 'install Kubeless FaaS provider'
+sh ./kubeless.sh
 
-
-echo 'install Kubeless Faas provider'
-kubectl create ns kubeless
-
-RELEASE=v1.0.0-alpha.8
-kubectl create -f https://github.com/kubeless/kubeless/releases/download/$RELEASE/kubeless-$RELEASE.yaml
-
-echo 'list of pods'
-kubectl get pods -n kubeless
-
-echo 'install kubeless client'
-export OS=$(uname -s| tr '[:upper:]' '[:lower:]')
-curl -OL https://github.com/kubeless/kubeless/releases/download/$RELEASE/kubeless_$OS-amd64.zip && \
-  sudo apt-get install unzip && \
-  unzip kubeless_$OS-amd64.zip && \
-  sudo mv bundles/kubeless_$OS-amd64/kubeless /usr/local/bin/

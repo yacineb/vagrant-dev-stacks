@@ -3,5 +3,5 @@
 #build docker admin image
 
 #add database
-docker run --net=host --rm couchdb-admin couchdb-ensure http://localhost:5984/test2
+docker run --net=host --rm couchdb-admin couchdb-ensure http://localhost:5984/test
 

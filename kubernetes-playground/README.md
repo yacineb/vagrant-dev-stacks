@@ -1,14 +1,18 @@
-# Kubernetes Cheat Sheet
+# A single-node Kubernetes cluster install (Ubuntu 16)
+
+I personally find minikube very poor and limited. I decided to use a real single-node cluster install using kubeadm.
+
+## Kubernetes Cheat Sheet
 
 Kubernetes master minimum requirements : CPUs=2, Memory=2048MB, Disk=20000MB
 
-# Install kubectl
+### Install kubectl
 
 <https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl>
 
 > make sure you have kubectl in PATH
 
-## minikube (Debian/Ubuntu)
+### minikube (Debian/Ubuntu)
 
 ``` console
 $ apt-get install virtualbox
@@ -24,7 +28,7 @@ $ #enable dashboard
 $ minikube dashboard
 ```  
 
-# k8s client (kubectl)
+### k8s client (kubectl)
 
 - Full dump of cluster logs : `kubectl cluster-info dump`
 - Nodes status : `kubectl get nodes`
@@ -37,11 +41,11 @@ $ minikube dashboard
 - dump deployment info : `kubectl describe deployment http `
 
 
-## Migrate from docker-compose
+### Migrate from docker-compose
 
 You can use [Kompose](https://github.com/kubernetes/kompose) it works like a charm
 
-## Networking
+### Networking
 
 - **Ingress** : Load-balancing and routing logic in k8s. it's handled by a plugin to be installed as a K8s service (Nginx, Traefic, etc)
 
